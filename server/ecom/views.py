@@ -8,18 +8,20 @@ from .models import Listing, Category
 from .serializers import ListingSerializer, CategorySerializer
 from rest_framework import generics 
 
-class Listings(generics.ListCreateAPIView):
+class ListingList(generics.ListCreateAPIView):
     queryset = Listing.objects.all()
     serializer_class = ListingSerializer
 
-class Listing(generics.RetrieveUpdateDestroyAPIView):
+class ListingDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Listing.objects.all()
     serializer_class = ListingSerializer
 
-class Categories(generics.ListCreateAPIView):
+
+class CategoryList(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-class Category(generics.RetrieveUpdateDestroyAPIView):
+class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+

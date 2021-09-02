@@ -7,29 +7,6 @@ from django.utils import timezone
 
 # Create your models here.
 
-# class User(models.Model):
-#     username = models.CharField(
-#         max_length=100,
-#         unique=True
-#     )
-#     number_of_sales = models.IntegerField(
-#         default = 0
-#     )
-#     number_of_reviews = models.IntegerField(
-#         default=0
-#     )
-#     current_listings = models.IntegerField(
-#         default=0
-#     )
-#     followers = models.IntegerField(
-#         default=0
-#     )
-#     following = models.IntegerField(
-#         default=0
-#     )
-
-#     def __str__(self):
-#         return self.username
 
 class Category(models.Model):
     category = models.CharField(max_length=100)
@@ -39,6 +16,11 @@ class Category(models.Model):
 
 
 class Listing(models.Model):
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        related_name="listings"
+    )
     EXTRA_SMALL = 'XS'
     SMALL = 'S'
     MEDIUM = 'M'
@@ -60,18 +42,11 @@ class Listing(models.Model):
         choices=SIZE_CHOICES,
         default=SMALL
     )
-    category = models.ForeignKey(
-        Category,
-        on_delete=models.CASCADE,
-        related_name="listing_category"
-    )
     favorites = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=timezone.now)
   
-
     def __str__(self):
         return self.title
-
 
 class Review(models.Model):
     ZERO = '0'
@@ -94,19 +69,7 @@ class Review(models.Model):
         default=ZERO
     )
     review = models.CharField(max_length=5000)
-    # written_by = models.ForeignKey(
-    #     User,
-    #     on_delete=models.CASCADE,
-    #     related_name='reviewer'
-    # )
-    # about = models.ForeignKey(
-    #     User,
-    #     on_delete=CASCADE,
-    #     related_name='reviewee'
-    # )
-
-
-
+  
     def __str__(self):
         return self.review
 

@@ -4,9 +4,8 @@ from django.contrib import admin
 from .models import Category
 from .models import Listing
 from .models import Review
-# from .models import User
+
 
 admin.site.register(Category)
 admin.site.register(Listing)
 admin.site.register(Review)
-# admin.site.register(User)

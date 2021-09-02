@@ -1,28 +1,32 @@
 from rest_framework import serializers
 from .models import Category, Listing, Review
 
-class CategorySerializer(serializers.ModelSerializer):
+class CategorySerializer(serializers.HyperlinkedModelSerializer):
     listings = serializers.HyperlinkedRelatedField(
-        view_name='listing',
+        view_name='listings_detail',
         many=True,
-        read_only=True
+        read_only=True,
     )
-
+    category_url = serializers.ModelSerializer.serializer_url_field(
+        view_name='category_detail'
+    )
     class Meta:
         model = Category
-        fields = 'category'
+        fields = ('category', 'listings', 'category_url')
 
 
 class ListingSerializer(serializers.HyperlinkedModelSerializer):
     category = serializers.HyperlinkedRelatedField(
-        view_name='category',
+        view_name='category_detail',
         read_only=True
     )
     category_id = serializers.PrimaryKeyRelatedField(
         queryset=Category.objects.all(),
-        source='category'
+        source="category"
     )
+  
     class Meta: 
         model = Listing
-        fields = ('price', 'title', 'brand', 'description', 'sizes', 'category', 'category_id', 'favorites', 'created_at')
+        fields = ('id', 'price', 'title', 'brand', 'description', 'sizes', 'category', 'category_id', 'favorites', 'created_at')
+
 
