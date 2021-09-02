@@ -3,7 +3,7 @@ from .models import Category, Listing, Review
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     listings = serializers.HyperlinkedRelatedField(
-        view_name='listings_detail',
+        view_name='listing_detail',
         many=True,
         read_only=True,
     )
