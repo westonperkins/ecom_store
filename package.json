@@ -1,0 +1,24 @@
+{
+  "name": "ecom_store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/westonperkins/ecom_store.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/westonperkins/ecom_store/issues"
+  },
+  "homepage": "https://github.com/westonperkins/ecom_store#readme",
+  "devDependencies": {
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0"
+  }
+}
