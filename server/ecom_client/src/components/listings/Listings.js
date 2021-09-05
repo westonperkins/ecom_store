@@ -43,3 +43,25 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, { getListings })(Listings);
+
+
+// <Fragment>
+// <h2>Listings</h2>
+//  <table className="table tabled-striped">
+//      <thead>
+//          <tr>
+//              <th>brand</th>
+//              <th>description</th>
+//          </tr>
+//      </thead>
+//      <tbody>
+//          {this.props.listings.map(listing => (
+//              <tr key = {listing.id}>
+//                  <td>{listing.description}</td>
+//                  <td>{listing.title}</td>
+//                  <td>{listing.sizes}</td>
+//              </tr>
+//          ))}
+//      </tbody>
+//  </table>
+// </Fragment>

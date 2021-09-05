@@ -1,0 +1,12 @@
+input {
+    width: 100px;
+}
+
+.searchbar {
+    width: 200px !important;
+}
+
+li {
+    margin: 1 rem !important;
+}
+
