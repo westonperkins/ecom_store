@@ -1,0 +1,20 @@
+.hoodies {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px !important;
+};
+
+input .input {
+    margin: 10px ;
+    padding: 0;
+    width: 200px !important;
+};
+
+.categories {
+    padding: 5px !important;
+}
+
+.filters {
+    margin-right: 2rem;
+}

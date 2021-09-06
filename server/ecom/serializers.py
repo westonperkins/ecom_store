@@ -27,6 +27,7 @@ class ListingSerializer(serializers.HyperlinkedModelSerializer):
   
     class Meta: 
         model = Listing
-        fields = ('id', 'price', 'title', 'brand', 'description', 'sizes', 'category', 'category_id', 'favorites', 'created_at')
+        get_latest_by = 'created_at'
+        fields = ('id', 'price', 'title', 'brand', 'description', 'sizes', 'category', 'category_id', 'favorites', 'created_at', 'photo_url')
 
 

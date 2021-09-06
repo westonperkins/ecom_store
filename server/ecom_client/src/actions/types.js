@@ -1,1 +1,2 @@
 export const GET_LISTINGS = "GET_LISTINGS"
+export const GET_CATEGORIES = "GET_CATEGORIES"

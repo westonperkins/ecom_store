@@ -1,45 +1,50 @@
-import React, { Component } from 'react'
-
-import './Header.css'
+import React, { Component } from "react";
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Form,
+  FormControl,
+  Button,
+} from "react-bootstrap";
+import "./Header.css";
 
 export class Header extends Component {
-    render () {
-        return (
-            <div className="header">
-
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="#">Ecom</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-                </button>
-            
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto">
-                    <li className="nav-item active">
-                        <a className="nav-link" href="#">Shop</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Sell</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Favorites</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Profile</a>
-                    </li>
-                </ul>
-                </div>
-                <div className="input-group rounded">
-                    <input type="search" className="form-control rounded searchbar" placeholder="Search" aria-label="Search"
-                        aria-describedby="search-addon" />
-                    <span className="input-group-text border-0" id="search-addon">
-                    <i className="fas fa-search">search</i>
-                    </span>
-                </div>
-            </nav>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#">Ecom</Navbar.Brand>
+        <Form className="d-flex">
+          <FormControl
+            type="search"
+            placeholder="Search"
+            className="mr-2"
+            aria-label="Search"
+          />
+          <Button variant="outline-success">Search</Button>
+        </Form>
+        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Collapse id="navbarScroll">
+          <Nav
+            className="mr-auto my-2 my-lg-0"
+            style={{ maxHeight: "100px" }}
+            navbarScroll
+          >
+            <Nav.Link href="#action1">Shop</Nav.Link>
+            <Nav.Link href="#action2">Sell</Nav.Link>
+            <Nav.Link href="#action3">Favorites</Nav.Link>
+            <Nav.Link href="#action4">Profile</Nav.Link>
+            {/* <NavDropdown title="bruyh" id="navbarScrollingDropdown">
+                  <NavDropdown.Item href="#action3">Favorites</NavDropdown.Item>
+                  <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action5">Something else here</NavDropdown.Item>
+                </NavDropdown> */}
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    );
+  }
 }
 
-export default Header
+export default Header;

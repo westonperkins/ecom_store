@@ -1,0 +1,8 @@
+.layout {
+    display: flex;
+}
+
+.title {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -44,6 +44,10 @@ class Listing(models.Model):
     )
     favorites = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=timezone.now)
+    photo_url = models.TextField(default="image unavaliable")
+
+    class Meta: 
+        get_latest_by = 'created_at'
   
     def __str__(self):
         return self.title
