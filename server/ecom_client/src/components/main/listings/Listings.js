@@ -12,6 +12,7 @@ export class Listings extends Component {
 
     componentDidMount() {
         this.props.getListings();
+        {console.log(this)}
     }
     
     render() {
@@ -19,10 +20,9 @@ export class Listings extends Component {
            <Fragment>
 
                {this.props.listings.reverse().map(listing => (
-               <Card style={{ width: '18rem'}}>
+               <Card style={{ width: '18rem'}} key={listing.id}>
                 <Card.Img style={{height: '300px', alignSelf: 'center', objectFit: 'contain' }}variant="top" src={listing.photo_url} />
                 <Card.Body>
-                    {console.log(listing.photo_url)}
                     <Card.Title>{listing.title}</Card.Title>
                     <Card.Text>
                     {listing.description}
@@ -34,7 +34,7 @@ export class Listings extends Component {
                     <ListGroupItem>On {new Date(listing.created_at).toDateString()}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    <Card.Link href="#">Details</Card.Link>
+                    <Card.Link href={`#/shop/listing/${listing.id}`}>Detail</Card.Link>
                     <Card.Link href="#">Buy</Card.Link>
                 </Card.Body>
                 </Card>
@@ -48,25 +48,3 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, { getListings })(Listings);
-
-
-// <Fragment>
-// <h2>Listings</h2>
-//  <table className="table tabled-striped">
-//      <thead>
-//          <tr>
-//              <th>brand</th>
-//              <th>description</th>
-//          </tr>
-//      </thead>
-//      <tbody>
-//          {this.props.listings.map(listing => (
-//              <tr key = {listing.id}>
-//                  <td>{listing.description}</td>
-//                  <td>{listing.title}</td>
-//                  <td>{listing.sizes}</td>
-//              </tr>
-//          ))}
-//      </tbody>
-//  </table>
-// </Fragment>

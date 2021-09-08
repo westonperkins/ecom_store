@@ -30,8 +30,8 @@ export class Header extends Component {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Shop</Nav.Link>
-            <Nav.Link href="#action2">Sell</Nav.Link>
+            <Nav.Link href="#/shop/">Shop</Nav.Link>
+            <Nav.Link href="#/sell/new/">Sell</Nav.Link>
             <Nav.Link href="#action3">Favorites</Nav.Link>
             <Nav.Link href="#action4">Profile</Nav.Link>
             {/* <NavDropdown title="bruyh" id="navbarScrollingDropdown">
