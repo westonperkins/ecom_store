@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types'
 import { addListing } from '../../actions/listings';
 
+import getCookie from '../../csrftoken'
+import { Redirect } from 'react-router';
+// console.log({CSRFToken})
 export class AddListingForm extends Component {
     state = {
         category: '',
@@ -13,6 +16,7 @@ export class AddListingForm extends Component {
         description: '',
         sizes: '',
         photo_url: '',
+        csrfmiddlewaretoken: getCookie('csrftoken')
     }
 
     static propTypes = {
@@ -22,15 +26,18 @@ export class AddListingForm extends Component {
 
     onSubmit = e => {
         e.preventDefault();
-        const {category, price, title, brand, description, sizes, photo_url } = this.state
-        const listing = {category, price, title, brand, description, sizes, photo_url};
+        console.log(this.state)
+        const {category, price, title, brand, description, sizes, photo_url, csrfmiddlewaretoken } = this.state
+        const listing = {category, price, title, brand, description, sizes, photo_url, csrfmiddlewaretoken};
         this.props.addListing(listing)
+        Redirect('/#/shop/')
     }
     render() {
-        const {category, price, title, brand, description, sizes, photo_url } = this.state
+        const {category, price, title, brand, description, sizes, photo_url, csrfmiddlewaretoken } = this.state
         return (
             <div style={{width: '25rem'}}>
                 <Form>
+
                 <Form.Group className="mb-3" controlId="floatingTextarea">
                     <Form.Label>Title</Form.Label>
                     <Form.Control type="text" placeholder="Enter title" value={title} name="title" onChange={this.onChange}/>

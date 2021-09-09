@@ -1,31 +1,10 @@
 import axios from "axios";
 import { dispatch } from "rxjs/internal/observable/pairs";
 import { GET_LISTINGS, DELETE_LISTING, LISTING_DETAIL, ADD_LISTING } from "./types";
+import getCookie from '../csrftoken'
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
 axios.defaults.xsrfCookieName = "XCSRF-TOKEN";
-
-// function getCookie(name) {
-//     let cookieValue = null;
-//     if (document.cookie && document.cookie !== '') {
-//         const cookies = document.cookie.split(';');
-//         for (let i = 0; i < cookies.length; i++) {
-//             const cookie = cookies[i].trim();
-//             // Does this cookie string begin with the name we want?
-//             if (cookie.substring(0, name.length + 1) === (name + '=')) {
-//                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-//                 break;
-//             }
-//         }
-//     }
-//     return cookieValue;
-// }
-// const csrftoken = getCookie('csrftoken');
-
-const headers = {
-    'X-CSRF-Token': window.CSRF_TOKEN
-}
-
 
 export const getListings = () => dispatch => {
     axios.get('/shop/')
@@ -50,8 +29,13 @@ export const listingDetail = (id) => dispatch => {
 };
 
 export const addListing = (listing) => dispatch => {
-    axios.post("/shop/", listing, {
-        xsrfHeaderName: "X-CSRFToken",
+    const params = Object.entries(listing)
+    .reduce((a,b) => {
+       return a + b[0] + "=" + encodeURI(b[1]) + "&"
+    }, "" )
+    console.log(params)
+    axios.post("/shop/", params, {
+        headers: {"X-CSRFToken": getCookie("csrftoken")}
     })
     .then(res => {
         dispatch({
@@ -65,7 +49,9 @@ export const addListing = (listing) => dispatch => {
 
 
 export const deleteListing = (id) => dispatch => {
-    axios.delete(`/shop/${id}/`)
+    axios.delete(`/shop/${id}`, {
+        headers: {"X-CSRFToken": getCookie("csrftoken")}
+    })
     .then(res => {
         dispatch({
             type: DELETE_LISTING,

@@ -1,0 +1,27 @@
+.itemContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.itemDesc {
+    width: 40vw;
+}
+
+img {
+    width: 50vw;
+}
+
+.brand {
+    font-weight: bold;
+}
+
+Button {
+    margin-right: 2rem;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}

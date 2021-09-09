@@ -1,0 +1,12 @@
+.card {
+    width: 14rem;
+    margin: 1rem;
+    min-width: 14rem;
+}
+
+.cardContainer {
+    width: 80vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

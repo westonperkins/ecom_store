@@ -16,31 +16,15 @@ class Category(models.Model):
 
 
 class Listing(models.Model):
-    category = models.ForeignKey(
-        Category,
-        on_delete=models.CASCADE,
-        related_name="listings"
+    category = models.CharField(
+        max_length=20,
     )
-    EXTRA_SMALL = 'XS'
-    SMALL = 'S'
-    MEDIUM = 'M'
-    LARGE = 'L'
-    EXTRA_LARGE = 'XL'
-    SIZE_CHOICES = [
-        (EXTRA_SMALL, 'xs',),
-        (SMALL, 's'),
-        (MEDIUM, 'm'),
-        (LARGE, 'l'),
-        (EXTRA_LARGE, 'xl')
-    ]
     price = models.IntegerField(default=0)
     title = models.CharField(max_length=100)
     brand = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
     sizes = models.CharField(
-        max_length=2,
-        choices=SIZE_CHOICES,
-        default=SMALL
+        max_length=20,
     )
     favorites = models.IntegerField(default=0)
     created_at = models.DateTimeField(default=timezone.now)

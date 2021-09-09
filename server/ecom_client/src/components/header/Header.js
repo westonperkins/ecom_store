@@ -13,7 +13,7 @@ export class Header extends Component {
   render() {
     return (
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#">Ecom</Navbar.Brand>
+        <Navbar.Brand href="#/shop/">Ecom</Navbar.Brand>
         <Form className="d-flex">
           <FormControl
             type="search"
