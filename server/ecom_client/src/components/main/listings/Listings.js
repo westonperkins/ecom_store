@@ -50,3 +50,6 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps, { getListings })(Listings);
+
+
+

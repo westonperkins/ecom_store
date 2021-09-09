@@ -5,7 +5,7 @@ from django.http import JsonResponse
 
 from .forms import ListingForm 
 from .models import Listing, Category
-from .serializers import ListingSerializer, CategorySerializer
+from .serializers import ListingSerializer
 from rest_framework import generics 
 
 class ListingList(generics.ListCreateAPIView):
@@ -17,11 +17,11 @@ class ListingDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ListingSerializer
 
 
-class CategoryList(generics.ListCreateAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+# class CategoryList(generics.ListCreateAPIView):
+#     queryset = Category.objects.all()
+#     serializer_class = CategorySerializer
 
-class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+# class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Category.objects.all()
+#     serializer_class = CategorySerializer
 

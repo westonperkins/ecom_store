@@ -1,6 +1,6 @@
 import axios from "axios";
 import { dispatch } from "rxjs/internal/observable/pairs";
-import { GET_LISTINGS, DELETE_LISTING, LISTING_DETAIL, ADD_LISTING } from "./types";
+import { GET_LISTINGS, DELETE_LISTING, LISTING_DETAIL, ADD_LISTING, GET_ERRORS } from "./types";
 import getCookie from '../csrftoken'
 
 axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
@@ -43,7 +43,16 @@ export const addListing = (listing) => dispatch => {
             payload: res.data
         })
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+        const errors = {
+            msg: err.response.data,
+            status: err.response.status
+        }
+        dispatch({
+            type: GET_ERRORS,
+            payload: errors
+        })
+    })
 }
 
 
