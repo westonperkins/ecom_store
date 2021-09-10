@@ -12,13 +12,15 @@ import AlertTemplate from 'react-alert-template-basic'
 import Header from './header/Header.js';
 import Main from './main/Main.js';
 import Register from './user/Register'
+import Login from './user/Login';
 import ListingDetail from './listingDetail/ListingDetail';
 import AddListingForm from './addListing/AddListingForm';
 import Alerts from './Alerts.js/Alerts';
+import Private from './routes/Private';
 
 import { Provider } from 'react-redux';
 import store from '../store';
-
+import { loadUser } from '../actions/auth';
 
 const alertOptions = {
     timeout: 3000,
@@ -26,6 +28,10 @@ const alertOptions = {
 }
 
 class App extends Component {
+    componentDidMount() {
+        store.dispatch(loadUser())
+    }
+
     render() {
         return (            
             <Provider store={store}>
@@ -35,8 +41,9 @@ class App extends Component {
                     <Alerts />
                     <br></br>
                     <Switch>
-                        <Route exact path='/shop/' component={Main} />
+                        <Private exact path='/shop/' component={Main} />
                         <Route exact path='/register/' component={Register} />
+                        <Route exact path='/login/' component={Login} />
                         <Route exact path='/shop/listing/:id/' component={ListingDetail} />
                         <Route exact path='/sell/new/' component={AddListingForm} />
                     </Switch>

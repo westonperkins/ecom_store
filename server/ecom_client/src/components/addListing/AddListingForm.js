@@ -30,9 +30,10 @@ export class AddListingForm extends Component {
         const {category, price, title, brand, description, sizes, photo_url, csrfmiddlewaretoken } = this.state
         const listing = {category, price, title, brand, description, sizes, photo_url, csrfmiddlewaretoken};
         this.props.addListing(listing)
-        Redirect('/#/shop/')
     }
     render() {
+        {console.log()}
+        // return <Redirect to='/shop'/>
         const {category, price, title, brand, description, sizes, photo_url, csrfmiddlewaretoken } = this.state
         return (
             <div style={{width: '25rem'}}>
