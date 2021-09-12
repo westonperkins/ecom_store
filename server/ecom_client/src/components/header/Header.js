@@ -8,6 +8,7 @@ import {
   Button,
 } from "react-bootstrap";
 import "./Header.css";
+import SearchBar from "../searchBar/SearchBar";
 import { logout } from '../../actions/auth'
 import PropTypes from 'prop-types'
 import {connect} from "react-redux"
@@ -21,19 +22,12 @@ export class Header extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
-      <Navbar bg="light" expand="lg">
+
+      <Navbar bg="light" expand="lg" className="loggedIn">
         <Navbar.Brand href="#/shop/">Ecom</Navbar.Brand>
-          <Form className="d-flex">
-            <FormControl
-              type="search"
-              placeholder="Search"
-              className="mr-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+          <SearchBar/>
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
+          <Navbar.Collapse id="navbarScroll" className="navItems">
             <Nav
               className="mr-auto my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
@@ -41,18 +35,21 @@ export class Header extends Component {
             >
               <Nav.Link href="#/shop/">Shop</Nav.Link>
               <Nav.Link href="#/sell/new/">Sell</Nav.Link>
-              <Nav.Link href="#action3">Favorites</Nav.Link>
-              <Nav.Link href="#action3">Profile</Nav.Link>
-              <Nav.Link href="#action4">{user ? `Logged in as ${user.username}` : ""}</Nav.Link>
-              <Nav.Link onClick={this.props.logout} href="/#/login">Logout</Nav.Link>
+
+              <NavDropdown title={user ? `Logged in as ${user.username}` : ""} id="nav-dropdown">
+                <NavDropdown.Item eventKey="4.2">Profile</NavDropdown.Item>
+                <NavDropdown.Item eventKey="4.1">Favorites</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item eventKey="4.4" onClick={this.props.logout} href="/#/login">Logout</NavDropdown.Item>
+              </NavDropdown>
             </Nav>
         </Navbar.Collapse>
       </Navbar>
     )
 
     const guestLinks = (
-      <Navbar bg="light" expand="lg">
-        <Nav>
+      <Navbar bg="light" expand="lg" className="loggedOut">
+        <Nav className='loginNav'>
           <Nav.Link href="/#/login">Login</Nav.Link>
           <Nav.Link href="/#/register">Register</Nav.Link>
         </Nav>
@@ -60,7 +57,7 @@ export class Header extends Component {
     );
 
     return (
-      <div>
+      <div className="nav">
         { isAuthenticated ? authLinks : guestLinks}
       </div>
     );

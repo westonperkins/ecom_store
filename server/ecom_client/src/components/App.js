@@ -44,8 +44,8 @@ class App extends Component {
                         <Private exact path='/shop/' component={Main} />
                         <Route exact path='/register/' component={Register} />
                         <Route exact path='/login/' component={Login} />
-                        <Route exact path='/shop/listing/:id/' component={ListingDetail} />
-                        <Route exact path='/sell/new/' component={AddListingForm} />
+                        <Private exact path='/shop/listing/:id/' component={ListingDetail} />
+                        <Private exact path='/sell/new/' component={AddListingForm} />
                     </Switch>
                 </Router>
                 </AlertProvider>

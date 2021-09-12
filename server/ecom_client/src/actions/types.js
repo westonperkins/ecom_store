@@ -2,6 +2,7 @@ export const GET_LISTINGS = "GET_LISTINGS"
 export const LISTING_DETAIL = "LISTING_DETAIL"
 export const ADD_LISTING = "ADD_LISTING"
 export const DELETE_LISTING = "DELETE_LISTING"
+export const EDIT_LISTING = "EDIT_LISTING"
 
 export const GET_ERRORS = "GET_ERRORS"
 
@@ -19,3 +20,5 @@ export const REGISTER_FAIL = "REGISTER_FAIL"
 
 export const CREATE_MESSAGE = "CREATE_MESSAGE"
 export const GET_MESSAGES = "GET_MESSAGES"
+
+export const GET_SEARCHED = "GET_SEARCHED"

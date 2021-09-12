@@ -5,8 +5,8 @@
 }
 
 .cardContainer {
-    width: 80vw;
+    width: 100vw;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }

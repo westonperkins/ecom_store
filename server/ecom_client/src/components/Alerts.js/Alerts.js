@@ -22,6 +22,10 @@ export class Alerts extends Component {
             if(error.msg.description) alert.error(`Description: ${error.msg.description.join()}`);
             if(error.msg.size) alert.error(`Size: ${error.msg.size.join()}`);
             if(error.msg.photo_url) alert.error(`Photo: ${error.msg.photo_url.join()}`);
+            if(error.msg.username) alert.error(`Username: ${error.msg.username.join()}`);
+            if(error.msg.password) alert.error(`Password: ${error.msg.password.join()}`);
+            if(error.msg.email) alert.error(`Email: ${error.msg.email.join()}`);
+            if(error.msg.name) alert.error(`Name: ${error.msg.name.join()}`);
         }
         if(message !== prevProps.message) {
             if(message.deleteListing) alert.success(message.deleteListing)

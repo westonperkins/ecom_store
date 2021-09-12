@@ -25,6 +25,7 @@ class Listing(models.Model):
     price = models.IntegerField(default=0)
     title = models.CharField(max_length=100)
     brand = models.CharField(max_length=100)
+    # soldBy = models.CharField(max_length=100, default='Unknown')
     description = models.CharField(max_length=500)
     sizes = models.CharField(
         max_length=20,
@@ -42,7 +43,7 @@ class Listing(models.Model):
         get_latest_by = 'created_at'
   
     def __str__(self):
-        return self.title
+        return str(self.seller.username)
 
 
 

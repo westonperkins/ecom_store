@@ -3,18 +3,36 @@ import {ListGroup, Button} from "react-bootstrap";
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { listingDetail, deleteListing } from '../../actions/listings'
-
+import EditListing from './modal/EditListing';
 
 import './ListingDetail.css'
 
 export class ListingDetail extends Component {
     static PropTypes = {
-        listings: PropTypes.array.isRequired
+        listings: PropTypes.array.isRequired,
+        auth: PropTypes.object.isRequired,
     };
     componentDidMount() {
         this.props.listingDetail(this.props.match.params.id);
+        {console.log(this.props)}
     };
     render() {
+        const { isAuthenticated, user } = this.props.auth;
+
+        const sellerLinks = (
+            <div>
+                <EditListing props={this.props.listings}/>
+                <Button onClick={() => {this.props.deleteListing(this.props.match.params.id)}}>Delete</Button>
+            </div>
+        )
+
+        const buyerLinks = (
+            <div>
+                <Button>Message Seller</Button>
+                <Button>Purchase</Button>
+            </div>
+        )
+
         return (
             <div className="itemContainer">
                 <img src={this.props.listings.photo_url}/>
@@ -28,10 +46,7 @@ export class ListingDetail extends Component {
                         <ListGroup.Item>Listed On {new Date(this.props.listings.created_at).toDateString()}</ListGroup.Item>
                     </ListGroup>
                     <div className="buttons">
-                        <Button>Message Seller</Button>
-                        <Button>Purchase</Button>
-                        <Button onClick={() => {this.props.deleteListing(this.props.match.params.id)}}>delete</Button>
-                        {console.log(this.props)}
+                    { isAuthenticated ? sellerLinks : buyerLinks}
                     </div>
                 </div>
             </div>
@@ -40,7 +55,8 @@ export class ListingDetail extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    listings: state.listings.listings
+    listings: state.listings.listings,
+    auth: state.auth
 })
 
 

@@ -2,11 +2,37 @@ input {
     width: 100px;
 }
 
-.searchbar {
-    width: 200px !important;
+form {
+    max-width: 400px !important;
 }
 
 li {
     margin: 1 rem !important;
 }
 
+.nav {
+    display: flex;
+
+
+}
+nav {
+    /* width: 100vw;
+    display: flex;
+    justify-content: space-around; */
+}
+
+.loggedIn {
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+}
+
+.navItems {
+    max-width: 25vw !important;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.loginNav {
+    width: 100vw;
+}

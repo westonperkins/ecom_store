@@ -14,5 +14,15 @@ module.exports = {
             },
         ]
     },
+    devServer: {
+        historyApiFallback: true,
+        contentBase: './',
+        hot: true
+     },
+     performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    }
 
 }

@@ -38,7 +38,7 @@ export class Login extends Component {
         return (
             <div className="formContainer">
                 <h2>Login</h2>
-                <Form>
+                <Form className='form'>
                 <Form.Group className="mb-3" >
                     <Form.Label>Username</Form.Label>
                     <Form.Control type="text" placeholder="Enter username" name="username" onChange={this.onChange} value={username}/>

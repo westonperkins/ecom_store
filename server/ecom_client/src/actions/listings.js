@@ -1,6 +1,6 @@
 import axios from "axios";
 import { dispatch } from "rxjs/internal/observable/pairs";
-import { GET_LISTINGS, DELETE_LISTING, LISTING_DETAIL, ADD_LISTING, GET_ERRORS } from "./types";
+import { GET_LISTINGS, DELETE_LISTING, LISTING_DETAIL, ADD_LISTING, GET_ERRORS, EDIT_LISTING } from "./types";
 import getCookie from '../csrftoken'
 import {tokenConfig} from './auth'
 import { createMessage } from './messages'
@@ -16,7 +16,16 @@ export const getListings = () => (dispatch, getState) => {
             payload: res.data
         });
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+        const errors = {
+            msg: err.response.data,
+            status: err.response.status
+        }
+        dispatch({
+            type: GET_ERRORS,
+            payload: errors
+        })
+    })
 };
 
 export const listingDetail = (id) => (dispatch, getState) => {
@@ -27,7 +36,16 @@ export const listingDetail = (id) => (dispatch, getState) => {
             payload: res.data,
         });
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+        const errors = {
+            msg: err.response.data,
+            status: err.response.status
+        }
+        dispatch({
+            type: GET_ERRORS,
+            payload: errors
+        })
+    })
 };
 
 export const addListing = (listing) => (dispatch, getState) => {
@@ -57,6 +75,28 @@ export const addListing = (listing) => (dispatch, getState) => {
 }
 
 
+export const editListing = (id, listing) => (dispatch, getState) => {
+    axios.put(`api/shop/${id}/`, listing, tokenConfig(getState), {
+        headers: {"X-CSRFToken": getCookie("csrftoken")}
+    })
+    .then(res => {
+        dispatch({
+            type: EDIT_LISTING,
+            payload: res.data,
+        });
+    })
+    .catch(err => {
+        const errors = {
+            msg: err.response.data,
+            status: err.response.status
+        }
+        dispatch({
+            type: GET_ERRORS,
+            payload: errors
+        })
+    })
+};
+
 
 export const deleteListing = (id) => (dispatch, getState) => {
     axios.delete(`api/shop/${id}`, tokenConfig(getState), {
@@ -69,6 +109,15 @@ export const deleteListing = (id) => (dispatch, getState) => {
             payload: id
         });
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+        const errors = {
+            msg: err.response.data,
+            status: err.response.status
+        }
+        dispatch({
+            type: GET_ERRORS,
+            payload: errors
+        })
+    })
 };
 

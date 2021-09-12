@@ -1,4 +1,4 @@
-import { GET_LISTINGS, DELETE_LISTING, LISTING_DETAIL, ADD_LISTING } from '../actions/types.js'
+import { GET_LISTINGS, DELETE_LISTING, LISTING_DETAIL, ADD_LISTING, EDIT_LISTING } from '../actions/types.js'
 
 const initialState = {
     listings: []
@@ -15,6 +15,11 @@ export default function(state = initialState, action ) {
             return {
                 ...state,
                 listings: action.payload
+            }
+        case EDIT_LISTING:
+            return {
+                ...state,
+                listings: [...state.listings, action.payload]
             }
         case ADD_LISTING:
             return {

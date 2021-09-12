@@ -16,5 +16,10 @@ input .input {
 }
 
 .filters {
-    margin-right: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.filter {
+    border: none !important;
 }

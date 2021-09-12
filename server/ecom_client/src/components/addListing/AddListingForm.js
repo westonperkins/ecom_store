@@ -20,10 +20,17 @@ export class AddListingForm extends Component {
     }
 
     static propTypes = {
-        addListing: PropTypes.func.isRequired
+        addListing: PropTypes.func.isRequired,
+        auth: PropTypes.object.isRequired,
     }
-    onChange = e => this.setState({ [e.target.name]: e.target.value })
+    onChange = e => this.setState({ 
+        [e.target.name]: e.target.value
+    }, console.log(this.state))
+ 
 
+    componentDidMount = ()=> {
+        {console.log(this)}
+    }
     onSubmit = e => {
         e.preventDefault();
         console.log(this.state)
@@ -82,6 +89,7 @@ export class AddListingForm extends Component {
                     <Form.Control type="text" placeholder="URL" value={photo_url} name="photo_url" onChange={this.onChange}/>
                 </Form.Group>
 
+
                 <Button variant="primary" type="submit" onClick={this.onSubmit}>
                     Submit
                 </Button>
@@ -91,4 +99,8 @@ export class AddListingForm extends Component {
     }
 }
 
-export default connect(null, {addListing})(AddListingForm)
+const mapStateToProps = state => ({
+    auth: state.auth
+  })
+
+export default connect(mapStateToProps, {addListing})(AddListingForm)

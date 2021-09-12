@@ -17,30 +17,24 @@ export class Filter extends Component {
     render() {
         return (
             <Accordion className="filters"> 
-                <Accordion.Item eventKey="0">
+                <Accordion.Item eventKey="0" className="category filter">
                     <Accordion.Header>Categories</Accordion.Header>
                     <Accordion.Body className="categories">
-                    {/* {this.props.categories.map(category => (
-                            <div key = {category.id} className="hoodies">
-                                <input className="input" type="checkbox" id="{category.category}" name="{category.category}"/>
-                                <label for="{category.category}">{category.category}</label>
-                            </div>
-                        ))} */}
                     </Accordion.Body>
                 </Accordion.Item>
-                <Accordion.Item eventKey="1">
+                <Accordion.Item eventKey="1" className="size filter">
                     <Accordion.Header>Size</Accordion.Header>
                     <Accordion.Body>
                 
                     </Accordion.Body>
                 </Accordion.Item>
-                <Accordion.Item eventKey="2">
+                <Accordion.Item eventKey="2" className="price filter">
                     <Accordion.Header>Price</Accordion.Header>
                     <Accordion.Body>
                 
                     </Accordion.Body>
                 </Accordion.Item>
-                <Accordion.Item eventKey="3">
+                <Accordion.Item eventKey="3" className="brand filter">
                     <Accordion.Header>Brand</Accordion.Header>
                     <Accordion.Body>
                 

@@ -16,11 +16,11 @@ from .models import Listing
 
 
 class ListingSerializer(serializers.ModelSerializer):
+    seller = serializers.ReadOnlyField(source='seller.username')
     class Meta: 
         model = Listing
         get_latest_by = 'created_at'
-        fields = ('id', 'price', 'title', 'brand', 'description', 'sizes', 'favorites', 'created_at', 'photo_url')
-
+        fields = '__all__'
 
 
     # category = serializers.HyperlinkedRelatedField(

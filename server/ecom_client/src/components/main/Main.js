@@ -10,15 +10,10 @@ import Listings from './listings/Listings'
 const Main = () => {
     return (
         <div>
-            <h2 className="title">Listings</h2>
-            <hr></hr>
 
-            <div className='layout'>
                 <Filter />
+            <div className='layout'>
                 <Listings />
-                {/* <Switch>
-                        <Route exact path='/shop/listing/:id/' component={ListingDetail} />
-                </Switch> */}
             </div>
         </div>
     )

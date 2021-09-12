@@ -9,11 +9,13 @@ import { Card, ListGroup, ListGroupItem, Image } from 'react-bootstrap'
 
 export class Listings extends Component {
     static propTypes = {
-        listings: PropTypes.array.isRequired
+        listings: PropTypes.array.isRequired,
+        auth: PropTypes.object.isRequired
     };
 
-    componentDidMount() {
+    componentDidMount(state) {
         this.props.getListings();
+
     }
     
     render() {
@@ -33,6 +35,7 @@ export class Listings extends Component {
                         <ListGroupItem>${listing.price}</ListGroupItem>
                         <ListGroupItem>{listing.sizes}</ListGroupItem>
                         <ListGroupItem>On {new Date(listing.created_at).toDateString()}</ListGroupItem>
+                        <ListGroupItem>Listed by: {listing.seller}</ListGroupItem>
                     </ListGroup>
                     <Card.Body>
                         <Card.Link href={`#/shop/listing/${listing.id}/`}>Detail</Card.Link>
@@ -46,7 +49,8 @@ export class Listings extends Component {
     }
 }
 const mapStateToProps = state => ({
-    listings: state.listings.listings
+    listings: state.listings.listings,
+    auth: state.auth
 })
 
 export default connect(mapStateToProps, { getListings })(Listings);
