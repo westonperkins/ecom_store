@@ -22,4 +22,5 @@ input .input {
 
 .filter {
     border: none !important;
+    color: black ;
 }

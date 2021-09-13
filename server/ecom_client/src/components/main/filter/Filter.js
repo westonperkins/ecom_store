@@ -1,50 +1,32 @@
-import React from 'react'
-import './Filter.css'
+import React from "react";
+import "./Filter.css";
 
 // import PropTypes from 'prop-types'
-import { Accordion } from 'react-bootstrap';
+import { Dropdown, DropdownButton, NavDropdown } from "react-bootstrap";
 // import { getCategories } from '../../../actions/categories'
 // import {connect } from 'react-redux'
-import { Component } from 'react';
+import { Component } from "react";
 
 export class Filter extends Component {
-    // static propTypes = {
-    //     categories: PropTypes.array.isRequired
-    // }
-    // componentDidMount() {
-    //     this.props.getCategories()
-    // }
-    render() {
-        return (
-            <Accordion className="filters"> 
-                <Accordion.Item eventKey="0" className="category filter">
-                    <Accordion.Header>Categories</Accordion.Header>
-                    <Accordion.Body className="categories">
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="1" className="size filter">
-                    <Accordion.Header>Size</Accordion.Header>
-                    <Accordion.Body>
-                
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="2" className="price filter">
-                    <Accordion.Header>Price</Accordion.Header>
-                    <Accordion.Body>
-                
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="3" className="brand filter">
-                    <Accordion.Header>Brand</Accordion.Header>
-                    <Accordion.Body>
-                
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
-        );
-    }
+  // static propTypes = {
+  //     categories: PropTypes.array.isRequired
+  // }
+  // componentDidMount() {
+  //     this.props.getCategories()
+  // }
+  render() {
+    return (
+      <div className='filters'>
+       <NavDropdown className='filter' title='Categories' id="nav-dropdown">
+                <NavDropdown.Item eventKey="4.2">Profile</NavDropdown.Item>
+                <NavDropdown.Item eventKey="4.1">Favorites</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item eventKey="4.4" onClick={this.props.logout} href="/#/login">Logout</NavDropdown.Item>
+              </NavDropdown>
+      </div>
+    );
   }
-  
+}
 
 // const mapStateToProps = state => ({
 //     categories: state.categories.categories
@@ -52,4 +34,4 @@ export class Filter extends Component {
 
 // export default connect(mapStateToProps, { getCategories })(Filter);
 
-export default Filter
+export default Filter;

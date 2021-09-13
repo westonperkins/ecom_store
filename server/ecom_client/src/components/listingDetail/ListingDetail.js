@@ -14,7 +14,7 @@ export class ListingDetail extends Component {
     };
     componentDidMount() {
         this.props.listingDetail(this.props.match.params.id);
-        {console.log(this.props)}
+        {console.log(this.props.match.params.id)}
     };
     render() {
         const { isAuthenticated, user } = this.props.auth;
@@ -22,7 +22,7 @@ export class ListingDetail extends Component {
         const sellerLinks = (
             <div>
                 <EditListing props={this.props.listings}/>
-                <Button onClick={() => {this.props.deleteListing(this.props.match.params.id)}}>Delete</Button>
+                <Button className='delete' onClick={() => {this.props.deleteListing(this.props.match.params.id)}}>Delete</Button>
             </div>
         )
 
@@ -38,12 +38,13 @@ export class ListingDetail extends Component {
                 <img src={this.props.listings.photo_url}/>
                     <div className="info">
                     <ListGroup className="itemDesc">
-                        <ListGroup.Item className="brand">{this.props.listings.brand}</ListGroup.Item>
-                        <ListGroup.Item>{this.props.listings.title}</ListGroup.Item>
-                        <ListGroup.Item>{this.props.listings.sizes}</ListGroup.Item>
-                        <ListGroup.Item>${this.props.listings.price}</ListGroup.Item>
-                        <ListGroup.Item>{this.props.listings.description}</ListGroup.Item>
-                        <ListGroup.Item>Listed On {new Date(this.props.listings.created_at).toDateString()}</ListGroup.Item>
+                        <ListGroup.Item className="brand item">{this.props.listings.brand}</ListGroup.Item>
+                        <ListGroup.Item className="titles item">{this.props.listings.title}</ListGroup.Item>
+                        <ListGroup.Item className="description item">Product Description: {this.props.listings.description}</ListGroup.Item>
+                        <ListGroup.Item className="size item">Size: {this.props.listings.sizes}</ListGroup.Item>
+                        <ListGroup.Item className="price item">${this.props.listings.price}</ListGroup.Item>
+                        <ListGroup.Item className="date item">Listed On {new Date(this.props.listings.created_at).toDateString()}</ListGroup.Item>
+                        <ListGroup.Item className="seller item">Listed by: {this.props.listings.seller}</ListGroup.Item>
                     </ListGroup>
                     <div className="buttons">
                     { isAuthenticated ? sellerLinks : buyerLinks}

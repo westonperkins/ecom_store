@@ -17,10 +17,16 @@ import ListingDetail from './listingDetail/ListingDetail';
 import AddListingForm from './addListing/AddListingForm';
 import Alerts from './Alerts.js/Alerts';
 import Private from './routes/Private';
+import Profile from './profile/Profile';
+import CheckoutForm from './checkout/CheckoutForm';
 
 import { Provider } from 'react-redux';
 import store from '../store';
 import { loadUser } from '../actions/auth';
+
+import {loadStripe} from '@stripe/stripe-js'
+import {Elements} from '@stripe/react-stripe-js'
+const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
 
 const alertOptions = {
     timeout: 3000,
@@ -30,6 +36,7 @@ const alertOptions = {
 class App extends Component {
     componentDidMount() {
         store.dispatch(loadUser())
+        console.log(process.env)
     }
 
     render() {
@@ -40,13 +47,17 @@ class App extends Component {
                     <Header/>
                     <Alerts />
                     <br></br>
+                    <Elements stripe={stripePromise}>
                     <Switch>
                         <Private exact path='/shop/' component={Main} />
                         <Route exact path='/register/' component={Register} />
                         <Route exact path='/login/' component={Login} />
                         <Private exact path='/shop/listing/:id/' component={ListingDetail} />
                         <Private exact path='/sell/new/' component={AddListingForm} />
+                        <Private exact path='/profile' component={Profile}/>
+                        <Private exact path='/checkout' component={CheckoutForm}/>
                     </Switch>
+                    </Elements>
                 </Router>
                 </AlertProvider>
             </Provider>

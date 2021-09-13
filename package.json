@@ -39,8 +39,14 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
+    "@emotion/styled": "^11.3.0",
+    "@stripe/react-stripe-js": "^1.4.1",
+    "@stripe/stripe-js": "^1.17.1",
     "axios": "^0.18.1",
     "bootstrap": "^5.1.0",
+    "dotenv": "^10.0.0",
+    "prebuilt": "^0.2.4",
+    "process": "^0.11.10",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-alert": "^7.0.3",
@@ -54,6 +60,7 @@
     "redux-csrf": "^1.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
+    "stripe": "^8.174.0",
     "style-loader": "^3.2.1"
   }
 }

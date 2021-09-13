@@ -2,6 +2,7 @@
     width: 14rem;
     margin: 1rem;
     min-width: 14rem;
+    border: none;
 }
 
 .cardContainer {
@@ -9,4 +10,20 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+}
+
+.detail,
+.buy {
+    background-color: black;
+    color: white;
+    border: wheat;
+}
+
+.itemtitle {
+    font-size: 1rem;
 }

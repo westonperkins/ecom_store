@@ -1,22 +1,26 @@
 .itemContainer {
     display: flex;
     justify-content: space-around;
+    align-items: flex-start ;
 }
 
 .itemDesc {
     width: 40vw;
+    border: none;
 }
 
 img {
     width: 50vw;
 }
 
-.brand {
-    font-weight: bold;
-}
 
 Button {
     margin-right: 2rem;
+}
+
+.buttons {
+    margin-top: 1rem;
+
 }
 
 .info {
@@ -24,4 +28,25 @@ Button {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+}
+
+
+.brand {
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.titles {
+    font-size: 1.5rem;
+}
+
+.price {
+    font-weight: bold;
+}
+
+
+.delete {
+    width: 100%;
+    background-color: black;
+    border: wheat;
 }

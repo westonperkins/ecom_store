@@ -12,6 +12,7 @@ import SearchBar from "../searchBar/SearchBar";
 import { logout } from '../../actions/auth'
 import PropTypes from 'prop-types'
 import {connect} from "react-redux"
+import { Link } from "react-router-dom";
 
 export class Header extends Component {
   static propTypes = {
@@ -37,7 +38,7 @@ export class Header extends Component {
               <Nav.Link href="#/sell/new/">Sell</Nav.Link>
 
               <NavDropdown title={user ? `Logged in as ${user.username}` : ""} id="nav-dropdown">
-                <NavDropdown.Item eventKey="4.2">Profile</NavDropdown.Item>
+                <NavDropdown.Item eventKey="4.2"><Link to='/profile'>Profile</Link></NavDropdown.Item>
                 <NavDropdown.Item eventKey="4.1">Favorites</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item eventKey="4.4" onClick={this.props.logout} href="/#/login">Logout</NavDropdown.Item>

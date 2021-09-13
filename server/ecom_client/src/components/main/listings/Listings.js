@@ -5,7 +5,7 @@ import './Listing.css'
 import {connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { getListings  } from '../../../actions/listings'
-import { Card, ListGroup, ListGroupItem, Image } from 'react-bootstrap'
+import { Card, ListGroup, ListGroupItem, Button } from 'react-bootstrap'
 
 export class Listings extends Component {
     static propTypes = {
@@ -15,6 +15,7 @@ export class Listings extends Component {
 
     componentDidMount(state) {
         this.props.getListings();
+        
 
     }
     
@@ -26,10 +27,8 @@ export class Listings extends Component {
                <Card className='card' key={listing.id}>
                     <Card.Img style={{height: '300px', alignSelf: 'center', objectFit: 'contain' }}variant="top" src={listing.photo_url} />
                     <Card.Body>
-                        <Card.Title>{listing.title}</Card.Title>
-                        <Card.Text>
-                        {listing.description}
-                        </Card.Text>
+                        <Card.Title>{listing.brand}</Card.Title>
+                        <Card.Title className='itemtitle'>{listing.title}</Card.Title>
                     </Card.Body>
                     <ListGroup className="list-group-flush">
                         <ListGroupItem>${listing.price}</ListGroupItem>
@@ -37,9 +36,9 @@ export class Listings extends Component {
                         <ListGroupItem>On {new Date(listing.created_at).toDateString()}</ListGroupItem>
                         <ListGroupItem>Listed by: {listing.seller}</ListGroupItem>
                     </ListGroup>
-                    <Card.Body>
-                        <Card.Link href={`#/shop/listing/${listing.id}/`}>Detail</Card.Link>
-                        <Card.Link href="#">Buy</Card.Link>
+                    <Card.Body className='links'>
+                        <Button className='detail' href={`#/shop/listing/${listing.id}/`}>Detail</Button>
+                        <Button className='buy' href="#">Buy</Button>
                     </Card.Body>
                 </Card>
                 ))}

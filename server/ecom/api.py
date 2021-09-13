@@ -11,6 +11,7 @@ class ListingViewSet(viewsets.ModelViewSet):
     serializer_class = ListingSerializer
 
     def get_queryset(self):
+        print(self.request)
         return self.request.user.listings.all()
 
     def perform_create(self, serializer):
