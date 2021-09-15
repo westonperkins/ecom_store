@@ -9,7 +9,7 @@
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .links {
@@ -26,4 +26,9 @@
 
 .itemtitle {
     font-size: 1rem;
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
 }

@@ -1,0 +1,16 @@
+.creds {
+    margin-left: 1rem;
+}
+
+.listingTitle {
+    margin-left: 1rem;
+}
+
+.editDelete {
+    display: flex;
+}
+
+.delete {
+    height: 2.25rem;
+}
+

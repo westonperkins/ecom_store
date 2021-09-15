@@ -57,7 +57,7 @@ export class EditListing extends Component {
     const { category, price, title, brand, description, sizes, photo_url, csrfmiddlewaretoken } = this.state;
     return (
       <>
-        <Button className='edit'variant="primary" onClick={this.openModal}>
+        <Button className='edit' variant="primary" onClick={this.openModal}>
           Edit
         </Button>
         <div className='modalContainer'>

@@ -5,6 +5,9 @@ import { getMyListings } from "../../actions/listings";
 import { loadUser } from "../../actions/auth";
 import store from "../../store";
 import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
+import "./Profile.css";
+import { deleteListing } from "../../actions/listings";
+import EditListing from "../listingDetail/modal/EditListing";
 
 export class Profile extends Component {
   static propTypes = {
@@ -22,10 +25,12 @@ export class Profile extends Component {
     const listings = this.props.listings;
     const authLinks = (
       <div>
-        <div>
-          <h2>{user ? `test ${user.username}` : "no"}</h2>
-          <h2>{user ? `test ${user.email}` : "no"}</h2>
+        <div className="creds">
+          <h2>{user ? `${user.username}` : "no"}</h2>
+          <h2>{user ? `${user.email}` : "no"}</h2>
         </div>
+        <hr></hr>
+        <h3 className="listingTitle">Your listings</h3>
         {listings ? (
           <div className="cardContainer">
             {this.props.listings.reverse().map((listing) => (
@@ -52,12 +57,18 @@ export class Profile extends Component {
                   <ListGroupItem>Listed by: {listing.seller}</ListGroupItem>
                 </ListGroup>
                 <Card.Body className="links">
-                  <Button
-                    className="detail"
-                    href={`#/shop/listing/${listing.id}/`}
-                  >
-                    Detail
-                  </Button>
+                  <div className='editDelete'>
+                    <EditListing props={this.props.listings} />
+                    <Button
+                      className="delete"
+                      onClick={() => {
+                        this.props.deleteListing(this.props.match.params.id),
+                          (window.location = "/#/shop");
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  </div>
                 </Card.Body>
               </Card>
             ))}

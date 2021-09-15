@@ -26,7 +26,6 @@ export class Listings extends Component {
   componentDidMount() {
     this.props.getListings();
     store.dispatch(loadUser());
-    // console.log(this.props.listings)
   }
 
   render() {
@@ -48,16 +47,12 @@ export class Listings extends Component {
       } else {
         this.setState({ searched });
       }
-      // console.log(searched);
+      console.log(searched);
     };
 
-    // {this.state == null ? console.log('hey') : console.log(this.state.searched)}
-    // console.log(test)
     const { token, user } = this.props.auth;
     const listings = this.props.listings;
-
-    // const test = this.props.listings.filter((f) => f.price == 555);
-    // console.log(this.props.listings);
+    // console.log(this.state);
     const authLinks = (
       <Fragment>
         <div className="cardContainer">
@@ -108,7 +103,7 @@ export class Listings extends Component {
                 <h2>No Listings</h2>
               </div>
             )
-          ) : this.state == null ? (
+          ) : 
             <div className="cardContainer">
               {this.state.searched.reverse().map((listing) => (
                 <Card className="card" key={listing.id}>
@@ -149,11 +144,7 @@ export class Listings extends Component {
                 </Card>
               ))}
             </div>
-          ) : (
-            <div>
-              <h2>Your search provided no results.</h2>
-            </div>
-          )}
+       }
         </div>
       </Fragment>
     );
@@ -167,16 +158,15 @@ export class Listings extends Component {
       <div>
         <div>
           {/* <SearchBar handleFilter={handleFilter}/> */}
-          <div>
+          <div className='searchBar'>
             <Form className="d-flex">
               <FormControl
                 type="search"
                 placeholder="Search"
-                className="mr-2"
+                className="searchBar"
                 aria-label="Search"
                 onChange={handleFilter}
               />
-              <Button variant="outline-success">Search</Button>
             </Form>
           </div>
         </div>
