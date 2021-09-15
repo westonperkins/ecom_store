@@ -22,3 +22,5 @@ export const CREATE_MESSAGE = "CREATE_MESSAGE"
 export const GET_MESSAGES = "GET_MESSAGES"
 
 export const GET_SEARCHED = "GET_SEARCHED"
+
+export const MAKE_PAYMENT = "MAKE_PAYMENT"

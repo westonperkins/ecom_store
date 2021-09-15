@@ -4,31 +4,34 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { listingDetail, deleteListing } from '../../actions/listings'
 import EditListing from './modal/EditListing';
+import store from '../../store'
+import { loadUser } from '../../actions/auth';
 
 import './ListingDetail.css'
 
 export class ListingDetail extends Component {
-    static PropTypes = {
-        listings: PropTypes.array.isRequired,
+    static propTypes = {
+        listings: PropTypes.object.isRequired,
         auth: PropTypes.object.isRequired,
     };
     componentDidMount() {
+        store.dispatch(loadUser());
         this.props.listingDetail(this.props.match.params.id);
-        {console.log(this.props.match.params.id)}
+        console.log(this.props.auth)
     };
     render() {
         const { isAuthenticated, user } = this.props.auth;
-
+        const car = false
         const sellerLinks = (
             <div>
                 <EditListing props={this.props.listings}/>
-                <Button className='delete' onClick={() => {this.props.deleteListing(this.props.match.params.id)}}>Delete</Button>
+                <Button className='delete' onClick={() => {this.props.deleteListing(this.props.match.params.id), window.location='/#/shop'}}>Delete</Button>
             </div>
         )
 
         const buyerLinks = (
             <div>
-                <Button>Message Seller</Button>
+                <Button>View Seller</Button>
                 <Button>Purchase</Button>
             </div>
         )
@@ -47,7 +50,7 @@ export class ListingDetail extends Component {
                         <ListGroup.Item className="seller item">Listed by: {this.props.listings.seller}</ListGroup.Item>
                     </ListGroup>
                     <div className="buttons">
-                    { isAuthenticated ? sellerLinks : buyerLinks}
+                    { car ? sellerLinks : buyerLinks}
                     </div>
                 </div>
             </div>

@@ -11,14 +11,14 @@ import { useState } from 'react';
 import {connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { getListings } from '../../actions/listings';
+import Listings from '../main/listings/Listings';
 
 const SearchBar = (props) => {
-    // static propTypes = {
+    // propTypes = {
     //     listings: PropTypes.array.isRequired,
     //     auth: PropTypes.object.isRequired
     // };
 
-       
     
     
     const [filteredData, setFilteredData] = useState([])
@@ -29,7 +29,6 @@ const SearchBar = (props) => {
         
         const searchTerm = e.target.value
         const listings = props.listings
-
         const searched = listings.filter((value) => {
             return (((value.title.toLowerCase().includes(searchTerm.toLowerCase()))) 
             || ((value.category.toLowerCase().includes(searchTerm.toLowerCase())))
@@ -37,29 +36,29 @@ const SearchBar = (props) => {
             || ((value.brand.toLowerCase().includes(searchTerm.toLowerCase())))
             || ((value.description.toLowerCase().includes(searchTerm.toLowerCase())))
             )
-            // console.log(value.title)
         })
-        console.log(searched)
-        if (searchTerm === "") {
+        if(searchTerm == '') {
             setFilteredData([])
-        } else {
-            setFilteredData(searched);
+        }else {
+            setFilteredData(searched)
         }
-
     }
     
         return (
             <div>
-            <Form className="d-flex">
-                <FormControl
-                type="search"
-                placeholder="Search"
-                className="mr-2"
-                aria-label="Search"
-                onChange={handleFilter}
-                />
-                <Button variant="outline-success">Search</Button>
-            </Form>
+                <div>
+                <Form className="d-flex">
+                    <FormControl
+                    type="search"
+                    placeholder="Search"
+                    className="mr-2"
+                    aria-label="Search"
+                    onChange={handleFilter}
+                    />
+                    <Button variant="outline-success">Search</Button>
+                </Form>
+                </div>
+                {/* <Listings/> */}
             </div>
         )
     

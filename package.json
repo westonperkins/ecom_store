@@ -20,6 +20,7 @@
   "homepage": "https://github.com/westonperkins/ecom_store#readme",
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
     "babel-eslint": "^10.1.0",
@@ -39,6 +40,7 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.15.4",
     "@emotion/styled": "^11.3.0",
     "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.17.1",

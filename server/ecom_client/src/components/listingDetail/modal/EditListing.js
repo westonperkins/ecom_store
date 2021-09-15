@@ -21,8 +21,8 @@ export class EditListing extends Component {
   };
 
   componentDidMount=()=> {
-    console.log(this.props)
-    console.log(this.state)
+    // console.log(this.props)
+    // console.log(this.state)
   }
 
   
@@ -32,7 +32,7 @@ export class EditListing extends Component {
     );
     
     state = {
-      category: `n`,
+      category: this.props.props.price,
       price: this.props.props.price,
       title: this.props.props.title,
       brand: this.props.props.brand,

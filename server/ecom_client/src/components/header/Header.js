@@ -21,12 +21,11 @@ export class Header extends Component {
   }
   render() {
     const { isAuthenticated, user } = this.props.auth;
-
     const authLinks = (
 
       <Navbar bg="light" expand="lg" className="loggedIn">
         <Navbar.Brand href="#/shop/">Ecom</Navbar.Brand>
-          <SearchBar/>
+
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll" className="navItems">
             <Nav
@@ -41,7 +40,7 @@ export class Header extends Component {
                 <NavDropdown.Item eventKey="4.2"><Link to='/profile'>Profile</Link></NavDropdown.Item>
                 <NavDropdown.Item eventKey="4.1">Favorites</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item eventKey="4.4" onClick={this.props.logout} href="/#/login">Logout</NavDropdown.Item>
+                <NavDropdown.Item eventKey="4.4" onClick={this.props.logout} >Logout</NavDropdown.Item>
               </NavDropdown>
             </Nav>
         </Navbar.Collapse>
