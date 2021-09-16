@@ -48,7 +48,7 @@ class App extends Component {
                     <br></br>
                     {/* <Elements stripe={stripePromise}> */}
                     <Switch>
-                        <Route exact path='/shop/' component={Main} />
+                        <Private exact path='/shop/' component={Main} />
                         <Route exact path='/register/' component={Register} />
                         <Route exact path='/login/' component={Login} />
                         <Route exact path='/shop/listing/:id/' component={ListingDetail} />
