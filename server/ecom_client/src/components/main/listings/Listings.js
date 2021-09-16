@@ -25,7 +25,8 @@ export class Listings extends Component {
 
   componentDidMount() {
     this.props.getListings();
-    store.dispatch(loadUser());
+
+    // store.dispatch(loadUser());
   }
 
   render() {
@@ -53,7 +54,7 @@ export class Listings extends Component {
     const { token, user } = this.props.auth;
     const listings = this.props.listings;
     // const bruh = this.props.listings != undefined || this.props.listings != null ? console.log('1') : console.log('2')
-    // console.log(this.props);
+    console.log(this.props.listings);
     const authLinks = (
       <Fragment>
         <div className="cardContainer">

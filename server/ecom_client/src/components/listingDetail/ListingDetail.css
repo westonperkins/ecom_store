@@ -1,7 +1,7 @@
 .itemContainer {
     display: flex;
     justify-content: space-around;
-    align-items: flex-start ;
+    align-items: center ;
 }
 
 .itemDesc {
@@ -10,7 +10,8 @@
 }
 
 img {
-    width: 50vw;
+    max-width: 35vw;
+    min-width: 30vw;
 }
 
 
