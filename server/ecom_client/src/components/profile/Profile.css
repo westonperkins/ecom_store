@@ -14,3 +14,9 @@
     height: 2.25rem;
 }
 
+.noListings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vw;
+}

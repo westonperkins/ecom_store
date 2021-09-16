@@ -30,8 +30,10 @@ class ListingViewSetAll(viewsets.ModelViewSet):
     def get_queryset(self):
         # queryset = Listing.objects.all()
         # filter_value = self.reuqest.query_params.get('id', None)
-        print(Listing.objects.get(pk=54))
         return Listing.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(seller=self.request.user) 
 
 
 

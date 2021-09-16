@@ -31,7 +31,7 @@ export class Profile extends Component {
         </div>
         <hr></hr>
         <h3 className="listingTitle">Your listings</h3>
-        {listings ? (
+        {listings.length > 0 ? (
           <div className="cardContainer">
             {this.props.listings.reverse().map((listing) => (
               <Card className="card" key={listing.id}>
@@ -74,8 +74,8 @@ export class Profile extends Component {
             ))}
           </div>
         ) : (
-          <div>
-            <h2>no listings</h2>
+          <div className='noListings'>
+            <h2>You have not listed anything yet, click <a href='/#/sell/new/'>here</a> to sell your first item</h2>
           </div>
         )}
       </div>

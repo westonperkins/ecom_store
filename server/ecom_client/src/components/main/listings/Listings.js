@@ -47,17 +47,18 @@ export class Listings extends Component {
       } else {
         this.setState({ searched });
       }
-      console.log(searched);
+    //   console.log(searched);
     };
 
     const { token, user } = this.props.auth;
     const listings = this.props.listings;
-    // console.log(this.state);
+    // const bruh = this.props.listings != undefined || this.props.listings != null ? console.log('1') : console.log('2')
+    // console.log(this.props);
     const authLinks = (
       <Fragment>
         <div className="cardContainer">
-          {this.state == null ? (
-            listings ? (
+          {this.state == null ? 
+            (this.props.listings != null ? (
               <div className="cardContainer">
                 {this.props.listings.reverse().map((listing) => (
                   <Card className="card" key={listing.id}>

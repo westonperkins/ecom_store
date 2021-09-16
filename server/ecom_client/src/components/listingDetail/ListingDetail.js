@@ -11,13 +11,13 @@ import './ListingDetail.css'
 
 export class ListingDetail extends Component {
     static propTypes = {
-        listings: PropTypes.object.isRequired,
+        listings: PropTypes.array.isRequired,
         auth: PropTypes.object.isRequired,
     };
     componentDidMount() {
         store.dispatch(loadUser());
         this.props.listingDetail(this.props.match.params.id);
-        console.log(this.props.auth)
+        console.log(this.props)
     };
     render() {
         const { isAuthenticated, user } = this.props.auth;
