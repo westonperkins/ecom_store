@@ -51,3 +51,14 @@ Button {
     background-color: black;
     border: wheat;
 }
+
+.otherItems {
+    /* color: red; */
+    margin-left: 5rem;
+}
+
+.related {
+    margin-left: 5rem;
+    margin-right: 5rem;
+    display: flex;
+}

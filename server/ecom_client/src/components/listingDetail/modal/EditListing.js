@@ -6,6 +6,7 @@ import { Modal, Button, Form } from "react-bootstrap";
  import './modal.css'
 import getCookie from "../../../csrftoken";
 import { Redirect } from "react-router";
+import { getListings } from "../../../actions/listings";
 
 export class EditListing extends Component {
   state = {
@@ -16,13 +17,14 @@ export class EditListing extends Component {
   closeModal = () => this.setState({ isOpen: false });
 
   static propTypes = {
-    editListing: PropTypes.func.isRequired,
+    // editListing: PropTypes.func.isRequired,
+    listings: PropTypes.array.isRequired,
     auth: PropTypes.object.isRequired,
   };
 
   componentDidMount=()=> {
-    // console.log(this.props)
-    // console.log(this.state)
+    this.props.getListings();
+    console.log(this)
   }
 
   
@@ -48,8 +50,8 @@ export class EditListing extends Component {
       // console.log(this.state);
       const { category, price, title, brand, description, sizes, photo_url, csrfmiddlewaretoken } = this.state;
       const listing = { category, price, title, brand, description, sizes, photo_url, csrfmiddlewaretoken };
-      this.props.editListing(this.props.props.id, listing);
-      // {console.log(this.props.props.category);}
+      this.props.editListing(this.props.props.props.match.params.id, listing);
+      console.log(this.props.props.props.match.params.id)
   };
   render() {
 
@@ -131,7 +133,6 @@ export class EditListing extends Component {
                 onChange={this.onChange}
               >
                 <option>Select Size</option>
-                <option>Select Size</option>
                 <option value="XS">XS</option>
                 <option value="S">S</option>
                 <option value="M">M</option>
@@ -196,124 +197,8 @@ export class EditListing extends Component {
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  listings: state.listings.listings,
 });
 
-export default connect(mapStateToProps, { editListing })(EditListing);
-
-// import { useState } from "react";
-// import getCookie from "../../../csrftoken";
-// import {Modal, Button, Form} from "react-bootstrap";
-// import { editListing } from "../../../actions/listings";
-
-// function EditListing(props) {
-//     const [show, setShow] = useState(false);
-
-//     const handleClose = () => setShow(false);
-//     const handleShow = () => setShow(true);
-
-//     const initialState = {
-//         category: '',
-//         price: '',
-//         title: '',
-//         brand: '',
-//         description: '',
-//         sizes: '',
-//         photo_url: '',
-//         csrfmiddlewaretoken: getCookie('csrftoken')
-//     }
-
-//     const [state, setState] = useState(initialState)
-
-//     const onChange =(e)=> {
-//         setState({...state, [e.target.id]: e.target.value})
-//         console.log(state)
-//     }
-
-//     const onSubmit = e => {
-//         e.preventDefault();
-
-//         // const {category, price, title, brand, description, sizes, photo_url, csrfmiddlewaretoken } = state
-//         // const listing = {category, price, title, brand, description, sizes, photo_url, csrfmiddlewaretoken};
-//         const edit = {
-//             category: state.category,
-//             price: state.price,
-//             title: state.title,
-//             brand: state.brand,
-//             description: state.description,
-//             sizes: state.sizes,
-//             photo_url: state.photo_url,
-//         }
-//         editListing(state)
-//     }
-//     // console.log(props)
-//     return (
-//       <>
-//         <Button variant="primary" onClick={handleShow}>
-//             Edit
-//         </Button>
-
-//         <Modal show={show} onHide={handleClose}>
-//           <Modal.Header closeButton>
-//             <Modal.Title>Edit your listing</Modal.Title>
-//           </Modal.Header>
-//           <Form>
-
-//             <Form.Group className="mb-3" controlId="floatingTextarea">
-//                 <Form.Label>Title</Form.Label>
-//                 <Form.Control type="text" placeholder={props.props.title}  value={state.title} name="title" onChange={onChange}/>
-//             </Form.Group>
-
-//             <Form.Group className="mb-3" controlId="floatingTextarea">
-//                 <Form.Label>Brand</Form.Label>
-//                 <Form.Control type="text" placeholder={props.props.brand} value={state.brand} name="brand" onChange={onChange}/>
-//             </Form.Group>
-
-//             <Form.Group className="mb-3" controlId="floatingTextarea">
-//                 <Form.Label>Description</Form.Label>
-//                 <Form.Control type="text" placeholder={props.props.description} value={state.description} name="description" onChange={onChange}/>
-//             </Form.Group>
-
-//             <Form.Group className="mb-3">
-//                 <Form.Label>Categories</Form.Label>
-//                 <Form.Select aria-label="Default select example" value={state.category} name="category" onChange={onChange}>
-//                 <option>Select Category</option>
-//                 <option value="Hoodies">Hoodies</option>
-//                 <option value="Pants">Pants</option>
-//                 </Form.Select>
-//             </Form.Group>
-
-//             <Form.Group className="mb-3">
-//                 <Form.Label>Sizes</Form.Label>
-//                 <Form.Select aria-label="Default select example" value={state.sizes} name="sizes" onChange={onChange}>
-//                 <option>Select Size</option>
-//                 <option value="XS">XS</option>
-//                 <option value="M">M</option>
-//                 </Form.Select>
-//             </Form.Group>
-
-//             <Form.Group className="mb-3" controlId="floatingTextarea">
-//                 <Form.Label>Price</Form.Label>
-//                 <Form.Control type="text" placeholder={props.props.price} value={state.price} name="price" onChange={onChange}/>
-//             </Form.Group>
-
-//             <Form.Group className="mb-3" controlId="floatingTextarea">
-//                 <Form.Label>Photo</Form.Label>
-//                 <Form.Control type="text" placeholder={props.props.photo_url} value={state.photo_url} name="photo_url" onChange={onChange}/>
-//             </Form.Group>
-//             </Form>
-
-//           <Modal.Footer>
-//             <Button variant="secondary" onClick={handleClose}>
-//               Close
-//             </Button>
-//             <Button variant="primary" onClick={onSubmit, handleClose}>
-//               Save Changes
-//             </Button>
-//           </Modal.Footer>
-//         </Modal>
-//       </>
-//     );
-//   }
-
-// export default EditListing
+export default connect(mapStateToProps, { editListing, getListings })(EditListing);
