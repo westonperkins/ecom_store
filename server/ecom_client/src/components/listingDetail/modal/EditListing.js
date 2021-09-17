@@ -24,7 +24,7 @@ export class EditListing extends Component {
 
   componentDidMount=()=> {
     this.props.getListings();
-    console.log(this)
+    // console.log(this)
   }
 
   

@@ -16,13 +16,34 @@ export class Profile extends Component {
   };
 
   componentDidMount() {
-    // console.log(this.props.listings);
     this.props.getMyListings();
     store.dispatch(loadUser());
   }
   render() {
     const { isAuthenticated, user } = this.props.auth;
     const listings = this.props.listings;
+
+    // const num = [1,2,3,4,5,6,7,8,9,10]
+
+    // const test = num.filter(item => {
+    //   return item > 6
+    // }).map(item => {
+    //   return item + 1
+    // })
+    // console.log(test)
+
+    {
+      user
+        ? listings
+            .filter((listing) => {
+              return listing.seller.toString() == user.username.toString();
+            })
+            .map((items) => {
+              console.log(items);
+            })
+        : console.log("boobies");
+    }
+
     const authLinks = (
       <div>
         <div className="creds">
@@ -31,53 +52,68 @@ export class Profile extends Component {
         </div>
         <hr></hr>
         <h3 className="listingTitle">Your listings</h3>
+        <div className='container'>
         {listings.length > 0 ? (
-          <div className="cardContainer">
-            {this.props.listings.reverse().map((listing) => (
-              <Card className="card" key={listing.id}>
-                <Card.Img
-                  style={{
-                    height: "300px",
-                    alignSelf: "center",
-                    objectFit: "contain",
-                  }}
-                  variant="top"
-                  src={listing.photo_url}
-                />
-                <Card.Body>
-                  <Card.Title>{listing.brand}</Card.Title>
-                  <Card.Title className="itemtitle">{listing.title}</Card.Title>
-                </Card.Body>
-                <ListGroup className="list-group-flush">
-                  <ListGroupItem>${listing.price}</ListGroupItem>
-                  <ListGroupItem>{listing.sizes}</ListGroupItem>
-                  <ListGroupItem>
-                    On {new Date(listing.created_at).toDateString()}
-                  </ListGroupItem>
-                  <ListGroupItem>Listed by: {listing.seller}</ListGroupItem>
-                </ListGroup>
-                <Card.Body className="links">
-                  <div className='editDelete'>
-                    <EditListing props={this.props.listings} />
-                    <Button
-                      className="delete"
-                      onClick={() => {
-                        this.props.deleteListing(this.props.match.params.id),
-                          (window.location = "/#/shop");
-                      }}
-                    >
-                      Delete
-                    </Button>
-                  </div>
-                </Card.Body>
-              </Card>
-            ))}
-          </div>
+          user ? (
+            listings
+              .filter((listing) => {
+                return listing.seller.toString() == user.username.toString();
+              })
+              .map((item) => {
+                return (
+                    <Card className="card" key={item.id}>
+                      <Card.Img
+                        style={{
+                          height: "300px",
+                          alignSelf: "center",
+                          objectFit: "contain",
+                        }}
+                        variant="top"
+                        src={item.photo_url}
+                      />
+                      <Card.Body>
+                        <Card.Title>{item.brand}</Card.Title>
+                        <Card.Title className="itemtitle">
+                          {item.title}
+                        </Card.Title>
+                      </Card.Body>
+                      <ListGroup className="list-group-flush">
+                        <ListGroupItem>${item.price}</ListGroupItem>
+                        <ListGroupItem>{item.sizes}</ListGroupItem>
+                        <ListGroupItem>
+                          On {new Date(item.created_at).toDateString()}
+                        </ListGroupItem>
+                        <ListGroupItem>Listed by: {item.seller}</ListGroupItem>
+                      </ListGroup>
+                      <Card.Body className="links">
+                        <div className="editDelete">
+                          <EditListing props={this.props.listings} />
+                          <Button
+                            className="delete"
+                            onClick={() => {
+                              this.props.deleteListing(
+                                this.props.match.params.id
+                              ),
+                                (window.location = "/#/shop");
+                            }}
+                          >
+                            Delete
+                          </Button>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                );
+              })
+          ) : null
         ) : (
-          <div className='noListings'>
-            <h2>You have not listed anything yet, click <a href='/#/sell/new/'>here</a> to sell your first item</h2>
+          <div className="noListings">
+            <h2>
+              You have not listed anything yet, click{" "}
+              <a href="/#/sell/new/">here</a> to sell your first item
+            </h2>
           </div>
         )}
+        </div>
       </div>
     );
 

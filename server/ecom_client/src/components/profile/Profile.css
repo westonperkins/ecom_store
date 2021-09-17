@@ -20,3 +20,11 @@
     align-items: center;
     height: 50vw;
 }
+
+.cardContainer {
+width: 100%;
+
+}
+.container {
+    display: flex;
+}

@@ -49,14 +49,14 @@ export const getListings = () => (dispatch, getState) => {
 
 export const getMyListings = () => (dispatch, getState) => {
   axios
-    .get("api/profile/", tokenConfig(getState))
+    .get("api/profile", tokenConfig(getState))
     .then((res) => {
       dispatch(
         {
           type: GET_LISTINGS,
           payload: res.data,
         },
-        console.log(res)
+        // console.log(res)
       );
     })
     .catch((err) => {

@@ -62,3 +62,12 @@ Button {
     margin-right: 5rem;
     display: flex;
 }
+
+
+.errorDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+
+}

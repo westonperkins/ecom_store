@@ -16,7 +16,7 @@ export class ListingDetail extends Component {
   };
   componentDidMount() {
     this.props.getListings();
-    console.log(this)
+    // console.log(this)
   }
   render() {
     const { isAuthenticated, user } = this.props.auth;
@@ -60,9 +60,8 @@ export class ListingDetail extends Component {
       return listings.category == detailCategory.toString();
     });
 
-
-
-
+    // console.log(sameCategory != [] ? console.log(true) : console.log(false))
+    console.log(sameCategory.length);
     return (
       <div>
         {listingDetail.map((listing) => {
@@ -95,58 +94,77 @@ export class ListingDetail extends Component {
                     Listed by: {listing.seller}
                   </ListGroup.Item>
                 </ListGroup>
-                <div className="buttons">{user.username == listing.seller ? sellerLinks : buyerLinks}</div>
+                <div className="buttons">
+                  {user.username == listing.seller ? sellerLinks : buyerLinks}
+                </div>
               </div>
             </div>
           );
         })}
         <hr></hr>
-          <h4 className="otherItems">Other Items You Might Like: </h4>
-        <div className='related'>
-            
-
-          {sameCategory.map((listing) => {
-            if (listing.id != detailId.toString()) {
-              return (
-                <Card className="card" key={listing.id}>
-                  <Card.Img
-                    style={{
-                      height: "300px",
-                      alignSelf: "center",
-                      objectFit: "contain",
-                    }}
-                    variant="top"
-                    src={listing.photo_url}
-                  />
-                  <Card.Body>
-                    <Card.Title>{listing.brand}</Card.Title>
-                    <Card.Title className="itemtitle">
-                      {listing.title}
-                    </Card.Title>
-                  </Card.Body>
-                  <ListGroup className="list-group-flush">
-                    <ListGroupItem>${listing.price}</ListGroupItem>
-                    <ListGroupItem>{listing.sizes}</ListGroupItem>
-                    <ListGroupItem>
-                      On {new Date(listing.created_at).toDateString()}
-                    </ListGroupItem>
-                    <ListGroupItem>Listed by: {listing.seller}</ListGroupItem>
-                  </ListGroup>
-                  <Card.Body className="links">
-                    <Button
-                      className="detail"
-                      href={`#/shop/listing/${listing.id}/`}
-                    >
-                      Detail
-                    </Button>
-                    <Button className="buy" href="#/checkout">
-                      Buy
-                    </Button>
-                  </Card.Body>
-                </Card>
-              );
-            }
-          })}
+        <h4 className="otherItems">Other Items You Might Like: </h4>
+        <div className="related">
+          {sameCategory.length > 1 ? (
+            sameCategory.map((listing) => {
+              if (listing.id != detailId.toString()) {
+                return (
+                  <Card className="card" key={listing.id}>
+                    <Card.Img
+                      style={{
+                        height: "300px",
+                        alignSelf: "center",
+                        objectFit: "contain",
+                      }}
+                      variant="top"
+                      src={listing.photo_url}
+                    />
+                    <Card.Body>
+                      <Card.Title>{listing.brand}</Card.Title>
+                      <Card.Title className="itemtitle">
+                        {listing.title}
+                      </Card.Title>
+                    </Card.Body>
+                    <ListGroup className="list-group-flush">
+                      <ListGroupItem>${listing.price}</ListGroupItem>
+                      <ListGroupItem>{listing.sizes}</ListGroupItem>
+                      <ListGroupItem>
+                        On {new Date(listing.created_at).toDateString()}
+                      </ListGroupItem>
+                      <ListGroupItem>Listed by: {listing.seller}</ListGroupItem>
+                    </ListGroup>
+                    <Card.Body className="links">
+                      {user.username != listing.seller ? (
+                        <div className="buttons">
+                          <Button className="buy" href="#/checkout">
+                            Buy
+                          </Button>
+                          <Button
+                            className="detail"
+                            href={`#/shop/listing/${listing.id}/`}
+                          >
+                            Detail
+                          </Button>
+                        </div>
+                      ) : (
+                        <div className="yourListingContainer">
+                          <Button
+                            className="yourListingButton"
+                            href={`#/shop/listing/${listing.id}/`}
+                          >
+                            View Your Listing
+                          </Button>
+                        </div>
+                      )}
+                    </Card.Body>
+                  </Card>
+                );
+              }
+            })
+          ) : (
+            <div className="errorDiv">
+              <h4>No listings of the same category</h4>
+            </div>
+          )}
         </div>
       </div>
     );

@@ -46,17 +46,17 @@ export class Listings extends Component {
       } else {
         this.setState({ searched });
       }
-    //   console.log(searched);
+        // console.log(searchTerm);
+        // console.log(searched)
     };
-
+    console.log(this.state)
     const { token, user } = this.props.auth;
     const listings = this.props.listings;
-    console.log(user);
     const authLinks = (
       <Fragment>
-        <div className="cardContainer">
-          {this.state == null ? 
-            (this.props.listings != null ? (
+        <div className="cardContainerLarge">
+          {this.state == null ? (
+            this.props.listings != null ? (
               <div className="cardContainer">
                 {this.props.listings.reverse().map((listing) => (
                   <Card className="card" key={listing.id}>
@@ -84,19 +84,28 @@ export class Listings extends Component {
                       <ListGroupItem>Listed by: {listing.seller}</ListGroupItem>
                     </ListGroup>
                     <Card.Body className="links">
-                      <Button
-                        className="detail"
-                        href={`#/shop/listing/${listing.id}/`}
-                      >
-                        Detail
-                      </Button>
-                      {user.username != listing.seller ?
-                      <Button className="buy" href="#/checkout">
-                        Buy
-                      </Button>
-                      :
-                      null
-  }
+                      {user.username != listing.seller ? (
+                        <div className='buttons'>
+                          <Button className="buy" href="#/checkout">
+                            Buy
+                          </Button>
+                          <Button
+                            className="detail"
+                            href={`#/shop/listing/${listing.id}/`}
+                          >
+                            Detail
+                          </Button>
+                        </div>
+                      ) : (
+                        <div className='yourListingContainer'>
+                          <Button
+                            className="yourListingButton"
+                            href={`#/shop/listing/${listing.id}/`}
+                          >
+                            View Your Listing
+                          </Button>
+                        </div>
+                      )}
                     </Card.Body>
                   </Card>
                 ))}
@@ -106,7 +115,7 @@ export class Listings extends Component {
                 <h2>No Listings</h2>
               </div>
             )
-          ) : 
+          ) : (
             <div className="cardContainer">
               {this.state.searched.reverse().map((listing) => (
                 <Card className="card" key={listing.id}>
@@ -147,7 +156,7 @@ export class Listings extends Component {
                 </Card>
               ))}
             </div>
-       }
+          )}
         </div>
       </Fragment>
     );
@@ -161,7 +170,7 @@ export class Listings extends Component {
       <div>
         <div>
           {/* <SearchBar handleFilter={handleFilter}/> */}
-          <div className='searchBar'>
+          <div className="searchBar">
             <Form className="d-flex">
               <FormControl
                 type="search"

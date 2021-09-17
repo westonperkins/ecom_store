@@ -6,10 +6,15 @@
 }
 
 .cardContainer {
-    width: 100vw;
+    /* width: 100vw; */
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    width: 100%;
+    margin: 0 auto;
+}
+.cardContainerLarge {
+    width: 100%;
 }
 
 .links {
@@ -31,4 +36,21 @@
 .searchBar {
     display: flex;
     justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.yourListingButton {
+    background-color: wheat;
+    color: black;
+    border: black;
+}
+
+.yourListingContainer{
+    display: flex;
+    align-items: flex-end;
 }
