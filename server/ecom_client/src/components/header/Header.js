@@ -37,8 +37,8 @@ export class Header extends Component {
               <Nav.Link href="#/sell/new/">Sell</Nav.Link>
 
               <NavDropdown title={user ? `Logged in as ${user.username}` : ""} id="nav-dropdown">
-                <NavDropdown.Item eventKey="4.2"><Link to='/profile'>Profile</Link></NavDropdown.Item>
-                <NavDropdown.Item eventKey="4.1">Favorites</NavDropdown.Item>
+                <NavDropdown.Item className='profileContainer' eventKey="4.2"><Link className='profile' to='/profile'>Profile</Link></NavDropdown.Item>
+
                 <NavDropdown.Divider />
                 <NavDropdown.Item eventKey="4.4" onClick={this.props.logout} >Logout</NavDropdown.Item>
               </NavDropdown>

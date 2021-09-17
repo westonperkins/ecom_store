@@ -36,3 +36,15 @@ nav {
 .loginNav {
     width: 100vw;
 }
+
+.profile {
+    text-decoration: none;
+    color: black
+}
+.profile:hover {
+    color: grey
+}
+
+.profileContainer:hover {
+background-color: white;
+}

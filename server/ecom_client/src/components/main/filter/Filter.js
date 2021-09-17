@@ -8,12 +8,7 @@ import { Dropdown, DropdownButton, NavDropdown } from "react-bootstrap";
 import { Component } from "react";
 
 export class Filter extends Component {
-  // static propTypes = {
-  //     categories: PropTypes.array.isRequired
-  // }
-  // componentDidMount() {
-  //     this.props.getCategories()
-  // }
+
   render() {
     return (
       <div className='filters'>
@@ -28,10 +23,6 @@ export class Filter extends Component {
   }
 }
 
-// const mapStateToProps = state => ({
-//     categories: state.categories.categories
-// })
 
-// export default connect(mapStateToProps, { getCategories })(Filter);
 
 export default Filter;
