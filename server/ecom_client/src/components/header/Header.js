@@ -24,7 +24,7 @@ export class Header extends Component {
     const authLinks = (
 
       <Navbar bg="light" expand="lg" className="loggedIn">
-        <Navbar.Brand href="#/shop/">Ecom</Navbar.Brand>
+        <Navbar.Brand href="#/shop/">Warehouse</Navbar.Brand>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll" className="navItems">

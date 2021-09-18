@@ -2,6 +2,8 @@
 
 ##### Created by Weston Perkins
 
+[Check out the App](https://warehouse-shop.herokuapp.com/#/login/)
+
 <hr>
 
 ### What is Warehouse?
@@ -11,13 +13,17 @@
 - React
 - Django
 - Redux
-- Webpack
-- Babel
-- Bootstrap
+- Webpack - module bundler
+- Babel - compiler
+- React Bootstrap
 - Heroku
 - CSS
 - Python
 - Javascript
+
+
+### Page Screenshots
+![Screen Shot 2021-09-18 at 11 24 59 AM](https://user-images.githubusercontent.com/79667230/133893990-d8e44400-fb31-4431-a68f-af106e4f2082.png)
 
 ### Wireframes
 ![Screen Shot 2021-08-31 at 12 08 15 AM](https://media.git.generalassemb.ly/user/34950/files/fc843800-09ef-11ec-8c18-78fd6cbe5936)
@@ -27,6 +33,9 @@
 ### User Story
 - The user should be able to register and log in with a unique profile that retains their account information and listings.
 - The user should be able to upload/edit/delete the listings they have created and also view the listings of others.
+- Users should be able to view details about the product they are viewing, i.e size, description, brand, condition, price, etc. 
+- (in the future) Users should be able to buy and sell from other users 
+- (in the future) Users should be able to communicate with other users to negotiate price and ask questions about the products
 
 
 ### Future Plans for the site
