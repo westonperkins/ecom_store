@@ -24,10 +24,6 @@
 ### Page Screenshots
 ![Screen Shot 2021-09-18 at 11 24 59 AM](https://user-images.githubusercontent.com/79667230/133893990-d8e44400-fb31-4431-a68f-af106e4f2082.png)
 
-
-https://user-images.githubusercontent.com/79667230/138145262-cae0c22b-d947-4e37-a157-734827791e61.mov
-
-
 ### Wireframes
 ![Screen Shot 2021-08-31 at 12 08 15 AM](https://media.git.generalassemb.ly/user/34950/files/fc843800-09ef-11ec-8c18-78fd6cbe5936)
 ![Screen Shot 2021-08-31 at 12 07 53 AM](https://media.git.generalassemb.ly/user/34950/files/fd1cce80-09ef-11ec-9e4f-b9f3a906cadd)
