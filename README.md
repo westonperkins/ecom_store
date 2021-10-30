@@ -21,7 +21,7 @@
 - Python
 - Javascript
 
-### Page Screenshots!
+### Page Screenshots
 ![warehouse](https://user-images.githubusercontent.com/79667230/139553806-12c024de-f91e-4ca2-bbcd-168cced5d2fb.gif)
 
 ![Screen Shot 2021-09-18 at 11 24 59 AM](https://user-images.githubusercontent.com/79667230/133893990-d8e44400-fb31-4431-a68f-af106e4f2082.png)
