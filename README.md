@@ -1,22 +1,36 @@
-# Warehouse
+# Warehouse {ignore=true}
 
-##### Created by Weston Perkins
+##### Created by Weston Perkins {ignore=true}
+[Check out the App](https://warehouse-shop.herokuapp.com/#/login/) {ignore=true}
 
-[Check out the App](https://warehouse-shop.herokuapp.com/#/login/)
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [What is Warehouse?](#what-is-warehouse)
+- [Technologies Used](#technologies-used)
+- [Page Screenshots](#page-screenshots)
+- [Wireframes](#wireframes)
+- [User Story](#user-story)
+- [Future Plans for the site](#future-plans-for-the-site)
+
+<!-- /code_chunk_output -->
+
 
 <hr>
 
 ### What is Warehouse?
-##### Warehouse is an online marketplace for clothing and accessories to help people shop through a digital 'warehouse' of vintage and designer clothing. The seller is able to list pieces under a profile at the same time view and purchase the listings of other sellers. 
+ Warehouse is an online marketplace for clothing and accessories to help people shop through a digital 'warehouse' of vintage and designer clothing. The seller is able to list pieces under a profile at the same time view and purchase the listings of other sellers. 
 
-#### Technologies Used
-- React
-- Django
-- Redux
-- Webpack - module bundler
-- Babel - compiler
-- React Bootstrap
-- Heroku
+### Technologies Used
+- React <i>frontend library</i>
+- Django <i>python web framework backend support</i>
+- Redux <i>state handling</i>
+- Webpack <i>module bundler</i>
+- Babel <i>compiler</i>
+- React Bootstrap <i>styling</i>
+- Heroku <i>hosting</i>
 - CSS
 - Python
 - Javascript
