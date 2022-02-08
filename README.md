@@ -26,7 +26,9 @@
 ### Technologies Used
 - React <i>frontend library</i>
 - Django <i>python web framework backend support</i>
+    - Provides: admin panel, security, sessions, authentication, etc. out of the box
 - Redux <i>state handling</i>
+    - App dispatches an action, the action is handled/changed by a reducer, and stored inside a store, then store sends to application
 - Webpack <i>module bundler</i>
     - Takes react application and compiles to "main.js"
 - Babel <i>compiler</i>
