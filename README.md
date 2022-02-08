@@ -28,7 +28,9 @@
 - Django <i>python web framework backend support</i>
 - Redux <i>state handling</i>
 - Webpack <i>module bundler</i>
+    - Takes react application and compiles to "main.js"
 - Babel <i>compiler</i>
+    - Transpiles Javascript to account for older syntax
 - React Bootstrap <i>styling</i>
 - Heroku <i>hosting</i>
 - CSS
