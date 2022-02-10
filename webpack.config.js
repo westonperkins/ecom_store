@@ -27,12 +27,12 @@ module.exports = {
             TWO: "1+1",
             "typeof window": JSON.stringify("object")
         }),
-        new webpack.DefinePlugin({
-            'process.env':{
-              'STRIPE_SECRET_KEY': JSON.stringify(''),
-              'STRIPE_PUBLISHABLE_KEY': JSON.stringify('')
-            }
-          }),
+        // new webpack.DefinePlugin({
+        //     'process.env':{
+        //       'STRIPE_SECRET_KEY': JSON.stringify(''),
+        //       'STRIPE_PUBLISHABLE_KEY': JSON.stringify('')
+        //     }
+        //   }),
           new webpack.DefinePlugin({
             "process.env": JSON.stringify(process.env)
           }),
