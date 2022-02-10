@@ -22,15 +22,15 @@
 
 *to begin application from clone:*
 - enter virtual environment
-    - pipenv shell 
+    - `pipenv shell`
 - install all pip dependencies from pipfile.lock
-    - pipenv synch
-        - might have to do a <b>pipenv lock</b> before you can sync
+    - `pipenv sync`
+        - might have to do a <b>`pipenv lock`</b> before you can sync
 - run server on port 8000 
-    - python3 manage.py runserver
+    - `python3 manage.py runserver`
 
 - start a new dev branch 
-    - git checkout -b < branch name >
+    - `git checkout -b < branch name >`
 
 ### What is Warehouse?
  Warehouse is an online marketplace for clothing and accessories to help people shop through a digital 'warehouse' of vintage and designer clothing. The seller is able to list pieces under a profile at the same time view and purchase the listings of other sellers. 
